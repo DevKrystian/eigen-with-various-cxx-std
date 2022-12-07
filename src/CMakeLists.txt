@@ -1,0 +1,23 @@
+add_library(eigen_with_cxx_20 SHARED Eigen_CXX_20.cpp)
+target_compile_features(eigen_with_cxx_20 PRIVATE cxx_std_20)
+set_target_properties(eigen_with_cxx_20 PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
+target_compile_options(eigen_with_cxx_20 PRIVATE ${BASE_COMPILE_FLAGS})
+target_link_libraries(eigen_with_cxx_20 PRIVATE Eigen3::Eigen)
+
+add_library(eigen_with_cxx_17 SHARED Eigen_CXX_17.cpp)
+target_compile_features(eigen_with_cxx_17 PRIVATE cxx_std_17)
+set_target_properties(eigen_with_cxx_17 PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
+target_compile_options(eigen_with_cxx_17 PRIVATE ${BASE_COMPILE_FLAGS})
+target_link_libraries(eigen_with_cxx_17 PRIVATE Eigen3::Eigen)
+
+add_library(eigen_with_cxx_14 SHARED Eigen_CXX_14.cpp)
+target_compile_features(eigen_with_cxx_14 PRIVATE cxx_std_14)
+set_target_properties(eigen_with_cxx_14 PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
+target_compile_options(eigen_with_cxx_14 PRIVATE ${BASE_COMPILE_FLAGS})
+target_link_libraries(eigen_with_cxx_14 PRIVATE Eigen3::Eigen)
+
+add_executable(main_app main.cpp)
+target_compile_features(main_app PRIVATE cxx_std_17)
+set_target_properties(main_app PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
+target_compile_options(main_app PRIVATE ${BASE_COMPILE_FLAGS})
+target_link_libraries(main_app PRIVATE eigen_with_cxx_14 eigen_with_cxx_17 eigen_with_cxx_20)
